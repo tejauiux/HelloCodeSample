@@ -1,0 +1,24 @@
+<html ng-app="HelloApp">
+<head>
+     <script src ="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+	 </script>
+</head>
+<body>
+     <div ng-controller="HelloCtrl">
+	     <input type="text" ng-model="reversemsg">
+		 <p>Hello {{reversemsg | reverseIt }}</p>
+	 </div>
+<script> 
+     var HelloApp = angular.module('HelloApp', [])
+     HelloApp.controller("HelloCtrl", function($scope){
+		 $scope.reversemsg
+	 });
+    HelloApp.filter('reverseIt', [function() {
+        return function(string) {
+            return string.split('').reverse().join('');
+        };
+    }]);
+
+</script>
+</body>
+</html>
